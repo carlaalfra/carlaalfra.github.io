@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Selectores</title>
+    </head>
+    <body>
+    <h1>Tipos de selectores que entran en examen</h1>
+        <h2>Clase (class="")</h2>
+        <p>El selector de clases selecciona elementos HTML con un atributo de clase específico.<br>
+
+Para seleccionar elementos con una clase específica, escriba un carácter de punto (.), seguido del nombre de la clase.</p>
+        <p><strong>Ejemplo</strong>:<br>
+   
+En este ejemplo, todos los elementos HTML con class="center" serán rojos y estarán alineados en el centro:<br> 
+
+.center {
+  text-align: center;
+  color: red;
+}
+</p>
+        <h2>Identificador (id="")</h2>
+        <p>El selector de identificación utiliza el atributo de identificación de un elemento HTML para seleccionar un elemento específico.<br>
+
+La identificación de un elemento es única dentro de una página, por lo que el selector de identificación se usa para seleccionar un elemento único.<br>
+
+Para seleccionar un elemento con una identificación específica, escriba un carácter almohadilla (#), seguido de la identificación del elemento.
+</p>
+        <p><strong>Ejemplo</strong>:<br>
+        La siguiente regla CSS se aplicará al elemento HTML con id="para1": <br>
+
+#para1 {
+  text-align: center;
+  color: red;
+}</p>
+        <h2>Todos los elementos (*)</h2>
+        <p>El selector universal (*) selecciona todos los elementos HTML de la página.</p>
+        <p><strong>Ejemplo</strong>:<br>
+        La siguiente regla CSS afectará a todos los elementos HTML de la página:<br>
+
+* {
+  text-align: center;
+  color: blue;
+}
+
+</p>
+        <h2>Varios elementos ( p, em, h1, h2)</h2>
+        <p>El selector de agrupación selecciona todos los elementos HTML con las mismas definiciones de estilo.<br>
+
+Mire el siguiente código CSS (los elementos h1, h2 y p tienen las mismas definiciones de estilo):<br>
+        h1 {
+  text-align: center;
+  color: red;
+}<br>
+
+h2 {
+  text-align: center;
+  color: red;
+}<br>
+
+p {
+  text-align: center;
+  color: red;
+}
+</p>
+        <p>Será mejor agrupar los selectores para minimizar el código.<br>
+
+Para agrupar selectores, separe cada selector con una coma.</p>
+        <p><strong>Ejemplo</strong>:<br>
+       En este ejemplo hemos agrupado los selectores del código anterior:<br> 
+
+h1, h2, p {
+  text-align: center;
+  color: red;
+}
+</p>
+        <h2>Elementos contenidos en otros elementos (ol li)</h2>
+        <p> Los elementos contenidos en otros elementos,es decir, aquellos son hijos de un elemento especificado se  seleccionan y se pueden modificar de manera conjunta.</p>
+        <p><strong>Ejemplo</strong>:<br>
+                ol li {background-color:blue;}
+        </p>
+        <h2>Sobrevuleo (p:hover)</h2>
+        <p>La :hoverpseudoclase CSS se utiliza para seleccionar elementos cuando pasas el mouse sobre ellos. Se puede utilizar en todos los elementos, no sólo en los enlaces.</p>
+        <p><strong>Ejemplo</strong>:<br>
+                Seleccionar y darle estilo a un enlace cuando pases el ratón sobre él:<br>
+
+a:hover {
+  background-color: yellow;
+  font-size: 18px;
+}
+        </p>
+    </body>
+</html>
