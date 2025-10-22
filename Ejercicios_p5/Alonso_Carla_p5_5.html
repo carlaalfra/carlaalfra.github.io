@@ -1,0 +1,57 @@
+<!doctype html> 
+<html lang=es>
+  <head>
+    <meta charset="utf-8" /> 
+    <title>Carla Alonso</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  </head>
+
+  <body>
+      <script>
+function setup() {
+  createCanvas(800, 500);   // Prueba a cambiar estos números y verás que todo se adapta
+  background(245, 169, 239);
+  noStroke();
+
+  // Título centrado usando width/2
+  textSize(28);
+  textAlign(CENTER, TOP);
+  fill(110, 85, 46);
+  text("Mi póster adaptable", width/2, 16);
+
+  // Subtítulo justo debajo
+  textSize(16);
+  fill(125, 121, 115);
+  text("Usando width y height para colocar texto", width/2, 50);
+
+  // Esquinas con coordenadas del propio lienzo
+  textSize(12);
+  fill(125, 121, 115);
+
+  textAlign(LEFT, TOP);
+  text("(0, 0)", 6, 6);
+
+  textAlign(RIGHT, TOP);
+  text("(" + width + ", 0)", width - 6, 6);
+
+  textAlign(LEFT, BOTTOM);
+  text("(0, " + height + ")", 6, height - 6);
+
+  textAlign(RIGHT, BOTTOM);
+  text("(" + width + ", " + height + ")", width - 6, height - 6);
+
+  // Centro real calculado con width/2 y height/2
+  textAlign(CENTER, CENTER);
+  textSize(14);
+  fill(132, 140, 39);
+  text("Centro (" + int(width/2) + ", " + int(height/2) + ")", width/2, height/2);
+
+    textSize(28);
+  textAlign(CENTER, BOTTOM);
+  fill(86, 67, 122);
+  text("Carla Alonso Fraga (" + int(width/2) + ", " + int(height-8) + ")", width/2, height-8);
+
+}
+</script>
+    </body>
+</html>
