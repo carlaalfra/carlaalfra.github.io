@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Carla Alonso</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+        let x_s, y_s, v_s, d_s, r_s;
+        let x_cs;          
+        let adelanto_s;  
+
+        let x_l, y_l, v_l, d_l, r_l;
+        let x_cl;           
+        let adelanto_l;  
+
+        let x_G, y_G, vy_G, d_G, r_G, Sg, cuerda;
+        
+        let S,troncoW, troncoH, copaD;
+
+        function setup() {
+            createCanvas(600, 600);
+
+            d_s = min(width, height) * 0.10;
+            r_s = d_s / 2;
+            x_s = -r_s;
+            y_s = height * 0.12;
+            v_s = width / 500;
+
+            d_l = min(width, height) * 0.10;
+            r_l = d_l / 2;
+            x_l = -r_l - width;   // ← corregido: era "rl"
+            y_l = height * 0.12;
+            v_l = width / 500;
+
+            adelanto_s = width * 0.10;
+            adelanto_l = width * 0.10;
+
+            x_cs = x_s + adelanto_s;
+            x_cl = x_l + adelanto_l;
+
+            d_G = height * 0.1;
+            r_G = d_G * 0.5;
+            Sg = height * 0.08;
+            cuerda = 1.2 * Sg;
+            x_G = width * 0.5;
+            y_G = height * 0.8;
+            vy_G = 0.5;
+          
+            
+             S = 0.1*height;
+           
+
+
+        }
+
+        function draw() {
+            background(206, 236, 240);
+
+            // — CIELO DEL SOL —
+            fill(200);
+            rect(x_cs, 0, width, height * 0.8);
+
+            // — CIELO DE LA LUNA —
+            fill(0,0,200);
+            rect(x_cl, 0, width, height * 0.8);
+
+            // Arcoiris
+            strokeWeight(10);
+            noFill();
+            stroke(255,0,0); arc(425, 200, 300,300, PI,TWO_PI);
+            stroke(247,133,10); arc(425,200,285,285,PI,TWO_PI);
+            stroke(239,247,10); arc(425,200,270,270,PI,TWO_PI);
+            stroke(0,255,0); arc(425,200,255,255,PI,TWO_PI);
+            stroke(0,0,255); arc(425,200,240,240,PI,TWO_PI);
+            stroke(121,10,247); arc(425,200,225,225,PI,TWO_PI);
+            stroke(171,25,191); arc(425,200,210,210,PI,TWO_PI);
+
+            // Nube
+            fill(252,242,237);
+            stroke(252,242,237);
+            ellipse(550,200,100,50);
+            circle(520,180,40);
+            circle(500,210,30);
+            circle(540,220,40);
+            circle(560,190,50);
+            circle(580,210,40);
+
+            // Casa
+            stroke(201,118,36);
+          strokeWeight (2);
+            fill(245,157,59);
+            rect(50,200,300,150);
+
+            fill(43,153,35);
+            stroke(43,153,35);
+            rect(0,350,600,250);
+
+            stroke(59,45,12);
+            fill(143,82,14);
+            rect(175,250,50,100);
+
+            stroke(229,235,23);
+            line(210,310,220,310);
+
+            stroke(89,66,44);
+            fill(191,227,227);
+            rect(90,230,40,60);
+            rect(265,230,40,60);
+
+            line(90,260,130,260);
+            line(110,230,110,290);
+            line(265,260,305,260);
+            line(285,230,285,290);
+
+            stroke(120,116,113);
+            fill(179,176,173);
+            rect(265,100,40,80);
+
+            // Techo
+            stroke(99,31,16);
+            fill(117,82,41);
+            triangle(50,200,200,100,350,200);
+
+            // Sol
+            stroke(219,178,31);
+            fill(235,187,16);
+            circle(x_s, y_s, d_s);
+
+            x_s += v_s;
+            x_cs += v_s;
+
+            // Luna
+            stroke(220);
+            fill(255,230,230);
+            arc(x_l, y_l, d_l, 60, HALF_PI, -HALF_PI);
+
+            x_l += v_l;
+            x_cl += v_l;
+
+            // Coche
+            stroke(255,0,0);
+            fill(255,0,0);
+            rect(400,300,120,25);
+            arc(470,310,100,70,PI,TWO_PI);
+            circle(405,312.5,25);
+            circle(520,312.5,25);
+
+            fill(0);
+            stroke(0);
+            circle(430,330,35);
+            circle(500,330,35);
+
+            fill(196,190,190);
+            circle(430,330,20);
+            circle(500,330,20);
+
+            stroke(206,236,240);
+            fill(206,236,240);
+            arc(470,300,70,40,PI,TWO_PI);
+
+            stroke(255,0,0);
+            strokeWeight(3);
+            line(460,280,460,300);
+
+            // GLOBO 
+            fill(255,80,80);
+            noStroke();
+            circle(x_G, y_G, Sg);
+
+            stroke(60);
+            line(x_G, y_G + 0.5*Sg, x_G, y_G + 0.5*Sg + cuerda);
+
+            y_G -= vy_G;// movimiento
+            x_G -=vy_G;
+            
+           S += 0.15;   
+
+// derivadas del tamaño
+troncoW = 0.3 * S;
+troncoH = 1.2 * S;
+copaD   = 1.1 * S;
+
+// TRONCO
+fill(128, 108, 48);
+noStroke();
+rect(0.60 * width,0.60 * height - troncoH, troncoW,troncoH);
+
+// COPA
+fill(40, 140, 60);
+circle(0.60 * width + troncoW * 0.5, 0.60 * height - troncoH,copaD);
+            
+            stroke(255);
+            fill(0);
+            textSize(16);
+            text("A1 — Mi escena con variables", 10, 10);
+        }
+    </script>
+  </body>
+</html>
