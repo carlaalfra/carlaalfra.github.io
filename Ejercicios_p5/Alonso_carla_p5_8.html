@@ -1,0 +1,161 @@
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Sistema solar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    </head>
+    <body>
+        <script>
+            let S;
+            let centerX, centerY, sunSize, R1;
+            let merX, merY, merR, merD, merθ, merW;
+            let venX, venY, venR, venD, venθ, venW;
+            let earX, earY, earR, earD, earθ, earW;
+            let marX, marY, marR, marD, marθ, marW;
+            let juX, juY, juR, juD, juθ, juW;
+            let satX, satY, satR, satD, satθ, satW;
+            let urX, urY, urR, urD, urθ, urW;
+            let neX, neY, neR, neD, neθ, neW;
+
+            function setup() {
+                createCanvas(800, 800);
+                S = 0.4;
+
+                centerX = width / 2;
+                centerY = height / 2;
+                sunSize = 0.2 * min(width, height) * S;
+                R1 = 0.15 * min(width, height) * S;
+
+                // Mercurio
+                merR = 1 * R1;
+                merD = 0.25 * sunSize;
+                merθ = 0;
+                merW = 0.03;
+
+                // Venus
+                venR = 2 * R1;
+                venD = 0.25 * sunSize;
+                venθ = PI / 3;
+                venW = 0.012;
+
+                //Tierra
+                earR = 3 * R1;
+                earD = 0.26 * sunSize;
+                earθ = PI / 2;
+                earW = 0.01;
+
+                //Marte
+                marR = 4 * R1;
+                marD = 0.14 * sunSize;
+                marθ = PI;
+                marW = 0.008;
+
+                //Jupiter
+                juR = 5 * R1;
+                juD = 0.7 * sunSize;
+                juθ = (4 * PI) / 3;
+                juW = 0.004;
+
+                //Saturno
+                satR = 6 * R1;
+                satD = 0.6 * sunSize;
+                satθ = (5 * PI) / 3;
+                satW = 0.003;
+
+                //Urano
+                urR = 7 * R1;
+                urD = 0.4 * sunSize;
+                urθ = 2.2 * PI;
+                urW = 0.002;
+
+                //Neptuno
+                neR = 8 * R1;
+                neD = 0.38 * sunSize;
+                neθ = 2.6 * PI;
+                neW = 0.0015;
+            }
+
+            function draw() {
+                background(36, 35, 31);
+
+                // Sol
+                fill(247, 223, 35);
+                noStroke();
+                circle(centerX, centerY, sunSize);
+
+                // Mercurio
+                fill(222, 103, 7);
+                circle(merX, merY, merD);
+
+                merX = centerX + cos(merθ) * merR;
+                merY = centerY + sin(merθ) * merR;
+                merθ += merW;
+
+                // Venus
+                venX = centerX + cos(venθ) * venR;
+                venY = centerY + sin(venθ) * venR;
+
+                fill(199, 174, 119);
+                circle(venX, venY, venD);
+                venθ += venW;
+
+                //Tierra
+                earX = centerX + cos(earθ) * earR;
+                earY = centerY + sin(earθ) * earR;
+
+                fill(17, 82, 125);
+                circle(earX, earY, earD);
+
+                earθ += earW;
+
+                //Marte
+                marX = centerX + cos(marθ) * marR;
+                marY = centerY + sin(marθ) * marR;
+
+                fill(153, 43, 15);
+                circle(marX, marY, marD);
+                marθ += marW;
+
+                //jupiter
+
+                juX = centerX + cos(juθ) * juR;
+                juY = centerY + sin(juθ) * juR;
+
+                fill(245, 213, 118);
+                circle(juX, juY, juD);
+
+                juθ += juW;
+
+                //Saturno
+                satX = centerX + cos(satθ) * satR;
+                satY = centerY + sin(satθ) * satR;
+
+                fill(184, 150, 50);
+                circle(satX, satY, satD);
+
+                satθ += satW;
+
+                //Urano
+                urX = centerX + cos(urθ) * urR;
+                urY = centerY + sin(urθ) * urR;
+
+                fill(68, 178, 140);
+                circle(urX, urY, urD);
+
+                urθ += urW;
+
+                //Neptuno
+                neX = centerX + cos(neθ) * neR;
+                neY = centerY + sin(neθ) * neR;
+
+                fill(114, 117, 214);
+                circle(neX, neY, neD);
+
+                neθ += neW;
+            }
+        </script>
+    </body>
+</html>
