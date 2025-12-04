@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Sistema solar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    </head>
+    <body>
+        <script>
+            
+            let centerX, centerY, sunSize, R1;
+            let earX, earY, earR, earD, earθ, earW;
+            let moonX, moonY, moonR, moonD, moonθ, moonW;
+            let K;
+            let p_E;
+            let p_M;
+            let S;
+
+            function setup() {
+                createCanvas(800, 800);
+                S=0.9;
+
+                K = 0.2;
+                p_E = 0.26;
+                p_M = 0.27;
+
+                centerX = width / 2;
+                centerY = height / 2;
+                sunSize = K * min(width, height)*S;
+                R1 = 0.15 * min(width, height)*S;
+
+                // Tierra
+                earR = 0.38 * min(width, height)*S;
+                earD = 0.06 * min(width, height)*S;
+                earθ = PI / 2;
+                earW = 0.01;
+                
+                // Luna
+                moonR = 0.25 * earR;     
+                moonD = p_M * earD;
+                moonθ = 0;
+                moonW = 0.05;
+            }
+
+            function draw() {
+                background(36, 35, 31);
+
+                // Sol
+                fill(247, 223, 35);
+                noStroke();
+                circle(centerX, centerY, sunSize);
+
+                // Tierra
+                earX = centerX + cos(earθ) * earR;
+                earY = centerY + sin(earθ) * earR;
+                fill(17, 82, 125);
+                circle(earX, earY, earD);
+                earθ += earW;
+                
+              
+                
+                // Luna
+                noFill();
+                stroke(120);
+                strokeWeight(1);
+                circle(earX, earY,moonR * 2);
+                
+                moonX = earX + cos(moonθ) * moonR;
+                moonY = earY + sin(moonθ) * moonR;
+                fill(169, 169, 169);
+                circle(moonX, moonY, moonD);
+                moonθ += moonW;
+            }
+        </script>
+    </body>
+</html>
