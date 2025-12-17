@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Sistema solar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    </head>
+    <body>
+        <script>
+            // Estado global
+            let xS, yS, dS, rS, vS;
+            let xL, yL, dL, rL, vL;
+            
+   function setup() {
+  createCanvas(800, 800);
+  
+  dS = min(width, height) * 0.20;
+  rS = dS / 2;
+  yS = height / 4;      
+  xS = -rS;                 // arranca entrando por la izquierda
+  vS = width / 400;      // velocidad proporcional al ancho
+       
+   dL = dS * 0.5;
+   rL = dL / 2;
+   xL = -width - rL; // fuera de la pantalla a la izquierda 
+   yL = height / 3; // altura distinta para distinguirla 
+   vL = vS; // misma velocidad
+}
+            
+        
+            function draw() {
+  // 3.1 Fondo decidido por la posición del Sol (if … else)
+  if (xS <= width + rS) {
+   
+    background (0, 0, 255);   // azul
+     } else {
+    
+    background(10);               // negro (gris muy oscuro)
+  }
+
+  // Suelo (decoración)
+  noStroke();
+  fill(20, 120, 40);
+  rect(0, 0.8*height, width, 0.2*height);
+  
+
+  // Sol (si está fuera, no se verá)
+  noStroke();
+  fill(245, 234, 10);
+  circle(xS, yS, dS);
+                
+// Luna 
+    noStroke();
+    fill(200); 
+    circle(xL, yL, dL); // equivalente a circle(xL, yL, dS*0.5)
+
+  // Movimiento constante
+  xS = xS + vS;
+  xL = xL + vL;
+
+  // 3.5 Reinicio por posición (noche suficientemente larga)
+  if (xS >= 2*width - rS) {
+    xS = -rS;   // Sol reentra por la izquierda
+    xL = -width - rL; // la Luna vuelve a esperar fuera a la izquierda }
+  }
+    textSize(14);
+    stroke (255,0,0);
+    fill(255);
+    text(xS, 10, 10);
+    text(xL, 10, 28);
+}
+        </script>
+    </body>
+</html>
