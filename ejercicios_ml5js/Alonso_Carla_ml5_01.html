@@ -36,11 +36,25 @@
   <div>
    <h3> Explicación de cómo funciona el código</h3>
 
-      <p>Este código crea una página web que activa la cámara del móvil y detecta objetos en tiempo real usando la librería ml5.js. En el "head" se configuran los datos básicos de la página y los estilos, y se importa la librería de inteligencia artificial.</p>
-
-<p>En el "body" hay un botón para iniciar la cámara, un texto que muestra el estado y otro que indica el objeto detectado con mayor precisión. El vídeo muestra la imagen en directo y el canvas, colocado encima, dibuja los rectángulos y los nombres de los objetos reconocidos.</p>
-
-<p>En el script, primero se accede a los elementos del HTML. La función initCamera() pide permiso para usar la cámara y ajusta el tamaño del canvas. Después se carga el modelo COCO-SSD y la función loopDetect() realiza la detección continuamente, actualizando los resultados en pantalla.</p>
+      <p>Esta página web sirve para usar la cámara del móvil o del ordenador y detectar objetos en tiempo real usando inteligencia artificial.
+        Para que funcione, tiene que estar publicada en GitHub Pages, porque el navegador solo deja usar la cámara en páginas que tengan HTTPS, es decir, que sean seguras.
+        Además, la cámara no se puede activar sola, por eso hay un botón. El navegador obliga a que el usuario haga una acción (como pulsar un botón) para dar permiso. </p>
+    <p> En la parte de arriba del código se carga la librería ml5.js en la versión 0.12.2. Esta librería ya tiene modelos de inteligencia artificial preparados. 
+      Nosotros usamos el modelo llamado COCO-SSD, que sirve para reconocer objetos comunes como personas, móviles, sillas, etc.
+      Lo bueno es que no tenemos que programar la inteligencia artificial desde cero, solo usarla. </p>
+    <p> En el HTML hay varias partes importantes. Primero, un botón para iniciar la cámara. Luego hay un elemento &lt;video&gt;, que es donde se ve la imagen en directo de la cámara. 
+      Encima del vídeo hay un &lt;canvas&gt;, que es como una capa transparente donde se dibujan los rectángulos y los nombres de los objetos que se detectan. </p>
+    <p> En el script, lo primero que se hace es guardar en variables los elementos del HTML usando document.getElementById.
+      Después se crean algunas variables como “detector”, que guardará el modelo de detección, y “running”, que sirve para saber si el programa está funcionando o no. </p>
+    <p> La función initCamera() es la que pide permiso para usar la cámara con navigator.mediaDevices.getUserMedia(). En el móvil intenta usar la cámara trasera.
+      Cuando el vídeo ya está listo, el canvas se ajusta al mismo tamaño que el vídeo para que los dibujos coincidan bien con la imagen. </p> 
+    <p> La función draw() se encarga de dibujar los resultados. 
+      Primero borra lo que había antes y luego, por cada objeto detectado, dibuja un rectángulo alrededor y escribe el nombre del objeto junto con el porcentaje de seguridad. </p>
+    <p> También hay una función llamada pickBest(), que simplemente mira cuál de los objetos detectados tiene mayor porcentaje de confianza y lo muestra como la mejor detección. </p> 
+    <p> La detección no ocurre solo una vez, sino todo el tiempo. Eso lo hace la función loopDetect(), que analiza la imagen, dibuja los resultados y se vuelve a ejecutar continuamente usando requestAnimationFrame.
+      Así parece que funciona en tiempo real. </p>
+    <p> Cuando se pulsa el botón, primero se inicia la cámara, luego se carga el modelo de detección y finalmente empieza el análisis continuo. 
+      Si hay algún error, aparece en pantalla y también en la consola. </p>
 
   </div>
 
@@ -140,4 +154,5 @@
     });
   </script>
 </body>
+
 </html>
