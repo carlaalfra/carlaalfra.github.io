@@ -56,6 +56,36 @@
     Usa el campo <span class="mono">Etiqueta de la postura</span> (P1/P2/P3) y pulsa <b>Capturar</b>.
     Luego sube los PNG a <b>m5_detecta/capturas/</b> en tu repositorio.
   </p>
+  <P><strong>1. Sombras y Mala Iluminación</strong><br>
+
+Síntoma: Los puntos clave no se ven o están mal colocados.<br>
+Situación: En condiciones de mala iluminación o contraluces fuertes.<br>
+Causa: La falta de luz, las sombras y el bajo contraste dificultan que el modelo detecte correctamente los puntos clave.<br>
+Comprobación: Se probó con luz en frente y los puntos no se detectaron correctamente en el cuerpo.</p>
+
+<p><strong>2. Ropa Ancha o Negra</strong><br>
+Síntoma: Los puntos de las extremidades o partes del cuerpo no se detectan correctamente.<br>
+Situación: Cuando la persona usa ropa ancha o de color negro en un fondo oscuro.<br>
+Causa: La ropa oscura o ancha reduce el contraste, dificultando que el modelo reconozca el cuerpo.<br>
+Comprobación: Se probó con ropa oscura y ancha, y los puntos de los brazos y piernas no se detectaron bien.<br></p>
+
+<p><strong>3. Varias Personas en Escena</strong><br>
+Síntoma: El modelo cambia entre personas, mezcla los puntos o muestra más puntos de los que hay en realidad.<br>
+Situación: Cuando hay más de una persona en el campo de visión de la cámara.<br>
+Causa: El modelo puede confundirse al intentar detectar múltiples personas y mezclar sus puntos clave.<br>
+Comprobación: Se colocaron dos personas frente a la cámara y se observaron errores en la detección de puntos, con puntos duplicados o mezclados.</p>
+
+<p><strong>4. Distancia Incorrecta a la Cámara</strong><br>
+Síntoma: Los puntos no se detectan correctamente o desaparecen.<br>
+Situación: Si la persona está demasiado cerca o demasiado lejos de la cámara.<br>
+Causa: El modelo no puede detectar bien los puntos si la persona está fuera del rango adecuado.<br>
+Comprobación: Se probó a diferentes distancias y algunos puntos no se vieron bien.</p>
+
+<p><strong>5. Movimiento Rápido Causa "Salto" de Puntos</strong><br>
+Síntoma: Los puntos se mueven erráticamente o desaparecen.<br>
+Situación: Cuando se realizan movimientos rápidos o gestos grandes.<br>
+Causa: El modelo tiene dificultades para seguir el cuerpo cuando hay movimientos rápidos.<br>
+Comprobación: Se movió rápidamente frente a la cámara y los puntos se "saltaron" o desaparecieron.</P>
 
   <script>
     const btnStart = document.getElementById("btnStart");
@@ -239,4 +269,5 @@
     });
   </script>
 </body>
+
 </html>
