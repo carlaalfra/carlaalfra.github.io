@@ -44,9 +44,27 @@
      A continuación detallo los errores detectados en el proceso
     </p>
     <ol>
-      <li>Fallo 1: …</li>
-      <li>Fallo 2: …</li>
-      <li>Fallo 3: …</li>
+      <li>Fallo 1:<br>
+
+Qué ocurrió: El modelo predijo “persona neutral” cuando en realidad estaba mostrando el libro.<br>
+
+Cuándo: Ocurrió cuando el libro estaba muy cerca de la cámara.<br>
+
+Por qué crees que pasó: Porque la cercanía hizo que la forma del libro no se reconociera bien.<br></li>
+      <li>Fallo 2:<br>
+
+Qué ocurrió: El modelo predijo “objeto” cuando en realidad era una persona neutral.<br>
+
+Cuándo: La persona  no se distinguía enyre los objetos del fondo<br>
+
+Por qué crees que pasó: El modelo se confundió por el fondo complejo y porque la silueta de la persona no era clara en comparación con los datos de entrenamiento.<br></li>
+      <li>Fallo 3:<br>
+
+Qué ocurrió: El modelo predijo “persona neutral” cuando en realidad era un libro.<br>
+
+Cuándo: Estaba moviendo el libro rápidamente frente a la cámara.<br>
+
+Por qué crees que pasó: El movimiento generó desenfoque y el modelo interpretó la forma como similar a una persona debido a la falta de ejemplos de objetos en movimiento durante el entrenamiento</li>
     </ol>
   </div>
 
